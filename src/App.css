@@ -16,3 +16,9 @@ button:hover {
   background: #CCBCBC;
   color: #1C1D21;
 }
+.grid{
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
