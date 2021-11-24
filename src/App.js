@@ -65,7 +65,8 @@ function App() {
       <button onClick={newGame}>New Game</button>
       <div className='grid'>
       {cards.map(card =>(
-        <SingleCard key = {card.id} card = {card} handleChoice = {handleChoice}/>
+        <SingleCard key = {card.id} card = {card} 
+        handleChoice = {handleChoice} flipped = {card === firstChoice || card === secondChoice || card.matched} />
       ))}
     </div>
       </div>
