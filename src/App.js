@@ -50,7 +50,9 @@ function App() {
 
       }else{
         console.log('They are not the same')
-        resetTurn()
+        setTimeout(() => {
+          resetTurn()
+        }, 650);
       } 
     } 
   }, [firstChoice, secondChoice])
