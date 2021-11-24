@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SingleCard from './components/SingleCard'
 function App() {
   const cardImages = [
@@ -11,8 +11,15 @@ function App() {
     {"src" : "/img/sword-1.png"}
   ]
 
+  //Use state variable section
   const [cards, setCards] = useState([])
   const [turns, setTurns] = useState()
+
+  const [firstChoice, setFirstChoice] = useState(null)
+  const [secondChoice, setSecondChoice] = useState(null)
+
+  //Function section
+
   const newGame = () =>{
     const shuffledCards = [...cardImages, ...cardImages]
     .sort(()=> Math.random() - 0.5)
@@ -20,13 +27,33 @@ function App() {
     setCards(shuffledCards)
     setTurns(0)
   }
+
+
+
+  useEffect(() => {
+    if(firstChoice && secondChoice){
+      if(firstChoice.src === secondChoice.src){
+        console.log('They are the same')
+        setFirstChoice(null)
+        setSecondChoice(null)
+        setTurns(prevTurns => prevTurns + 1)
+      }else{
+        console.log('They are not the same')
+      } 
+    } 
+  }, [firstChoice, secondChoice])
+
+  const handleChoice = card =>{
+    firstChoice ? setSecondChoice(card) : setFirstChoice(card)
+  }
+
   return (
     <div className="App">
       <h1>Memory Game</h1>
       <button onClick={newGame}>New Game</button>
       <div className='grid'>
       {cards.map(card =>(
-        <SingleCard key = {card.id} card = {card}/>
+        <SingleCard key = {card.id} card = {card} handleChoice = {handleChoice}/>
       ))}
     </div>
       </div>
