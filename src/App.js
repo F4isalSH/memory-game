@@ -28,17 +28,22 @@ function App() {
     setTurns(0)
   }
 
+  const resetChoices = () =>{
+    setFirstChoice(null)
+    setSecondChoice(null)
+    setTurns(prevTurns => prevTurns + 1)
+  }
+
 
 
   useEffect(() => {
     if(firstChoice && secondChoice){
       if(firstChoice.src === secondChoice.src){
         console.log('They are the same')
-        setFirstChoice(null)
-        setSecondChoice(null)
-        setTurns(prevTurns => prevTurns + 1)
+        resetChoices()
       }else{
         console.log('They are not the same')
+        resetChoices()
       } 
     } 
   }, [firstChoice, secondChoice])
