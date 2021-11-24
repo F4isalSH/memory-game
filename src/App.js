@@ -28,7 +28,7 @@ function App() {
     setTurns(0)
   }
 
-  const resetChoices = () =>{
+  const resetTurn = () =>{
     setFirstChoice(null)
     setSecondChoice(null)
     setTurns(prevTurns => prevTurns + 1)
@@ -40,10 +40,10 @@ function App() {
     if(firstChoice && secondChoice){
       if(firstChoice.src === secondChoice.src){
         console.log('They are the same')
-        resetChoices()
+        resetTurn()
       }else{
         console.log('They are not the same')
-        resetChoices()
+        resetTurn()
       } 
     } 
   }, [firstChoice, secondChoice])
