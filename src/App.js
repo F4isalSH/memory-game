@@ -31,8 +31,9 @@ function App() {
 
   useEffect(() => {
     newGame()
-
   }, [])
+
+  
   const resetTurn = () =>{
     setFirstChoice(null)
     setSecondChoice(null)
