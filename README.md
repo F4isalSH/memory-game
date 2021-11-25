@@ -1,3 +1,3 @@
 # Memory game created with React!
 
-Screenshots soon...
+<img src="public/demo.png">
