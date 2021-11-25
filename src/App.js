@@ -18,16 +18,21 @@ function App() {
   const [firstChoice, setFirstChoice] = useState(null)
   const [secondChoice, setSecondChoice] = useState(null)
 
-  //Function section
-
+  //Function section 
   const newGame = () =>{
     const shuffledCards = [...cardImages, ...cardImages]
     .sort(()=> Math.random() - 0.5)
     .map((card)=> ({...card, id: Math.random()}))
     setCards(shuffledCards)
     setTurns(0)
+    setFirstChoice(null)
+    setSecondChoice(null)
   }
 
+  useEffect(() => {
+    newGame()
+
+  }, [])
   const resetTurn = () =>{
     setFirstChoice(null)
     setSecondChoice(null)
@@ -71,7 +76,9 @@ function App() {
         handleChoice = {handleChoice} flipped = {card === firstChoice || card === secondChoice || card.matched} />
       ))}
     </div>
-      </div>
+    <br />
+    <span>Turns: {turns}</span>
+    </div>
   );
 }
 
